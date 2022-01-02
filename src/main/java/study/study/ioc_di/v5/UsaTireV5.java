@@ -2,11 +2,11 @@ package study.study.ioc_di.v5;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 @Slf4j
 @Qualifier("usaTire")
-@Service
+@Component
 public class UsaTireV5 implements TireV5 {
     @Override
     public String getBrand() {
