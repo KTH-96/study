@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Spliterator;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -39,4 +40,18 @@ class InterfaceMethodTest {
         while (spliterator2.tryAdvance(s -> log.info("spliterator names1 = {}", s)));
     }
 
+    @Test
+    void stream() {
+        names.stream().map(String::toUpperCase)
+                .filter(s -> s.startsWith("T"))
+                .collect(Collectors.toList())
+                .forEach(s -> log.info("stream result = {}", s));
+    }
+
+    @Test
+    @DisplayName("removeIf는 조건에 맞은 값을 제거")
+    void removeIf() {
+        names.removeIf(s -> s.startsWith("t"));
+        names.forEach(s -> log.info("result = {}", s));
+    }
 }

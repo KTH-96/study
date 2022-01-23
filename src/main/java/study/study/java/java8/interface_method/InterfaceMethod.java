@@ -12,9 +12,6 @@ public class InterfaceMethod {
         names.add("lee");
         names.add("yan");
 
-//        name.forEach((s) -> System.out.println(s));
-        names.forEach(System.out::println);
-        Spliterator<String> spliterator1 = names.spliterator();
-        while (spliterator1.tryAdvance(System.out::println));
+        //iterable, Collection, Comparator
     }
 }
