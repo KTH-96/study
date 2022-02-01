@@ -1,18 +1,23 @@
 package study.study.java.java8.interface_method;
 
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 class OptionalExTest {
 
-    List<OptionalEx> optionalEx;
+    List<OptionalEx> optionalEx = new ArrayList<>();
 
     @BeforeEach
     void ex() {
@@ -25,8 +30,23 @@ class OptionalExTest {
     }
 
     @Test
-    @DisplayName("Optional")
+    @DisplayName("Optional get")
     void optional1() {
+        Optional<OptionalEx> findM = optionalEx.stream()
+                .filter(s -> s.getName().startsWith("m", 2))
+                .findFirst();
 
+        log.info("findM first = {}", findM.get().getName());
+        assertThat(findM.isPresent()).isTrue();
+    }
+
+    @Test
+    @DisplayName("Optional ifPresent")
+    void optional2() {
+        Optional<OptionalEx> findM = optionalEx.stream()
+                .filter(s -> s.getName().startsWith("m", 2))
+                .findFirst();
+        //Consumer
+        findM.ifPresent(s -> log.info("findM name ={}", s.getName()));
     }
 }

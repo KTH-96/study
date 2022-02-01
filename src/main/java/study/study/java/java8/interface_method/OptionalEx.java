@@ -1,5 +1,7 @@
 package study.study.java.java8.interface_method;
 
+import java.util.Optional;
+
 public class OptionalEx {
     private Long id;
     private String name;
@@ -46,8 +48,8 @@ public class OptionalEx {
         this.tf = tf;
     }
 
-    public Info getInfo() {
-        return info;
+    public Optional<Info> getInfo() {
+        return Optional.ofNullable(info);
     }
 
     public void setInfo(Info info) {
